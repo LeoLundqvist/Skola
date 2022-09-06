@@ -5,12 +5,25 @@ void SchoolSystem::Run()
 	int counter = 0;
 	while (true)
 	{
+		std::string input = "";
+		std::getline(std::cin, input);
+		
+		 
+		switch(input)
+		{
+			case "a":
+
+			break;
+
+		}
+			
 		//Menyn
 		//Input
 		//Feedback
 		std::cout << "Loop: " << counter << "\n";
 		counter++;
 		std::cin.get();
+
 	}
 }
 

@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NewFolder1\Main.cpp">
+    <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NewFolder1\SchoolSystem.cpp">
+    <ClCompile Include="src\SchoolSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NewFolder1\Student.h">
+    <ClInclude Include="src\Student.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NewFolder1\SchoolSystem.h">
+    <ClInclude Include="src\SchoolSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
