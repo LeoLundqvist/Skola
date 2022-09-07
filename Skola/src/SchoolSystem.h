@@ -9,8 +9,12 @@ public:
 	void Run();
 	void AddStudent();
 	void RemoveStudent();
-	void AddClass();
+	void AddClass(std::string input);
 	void RemoveClass();
+	void InfoClass();
+	void InfoStudent();
+
+
 
 
 	std::vector<Student> students;
