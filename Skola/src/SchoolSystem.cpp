@@ -2,7 +2,10 @@
 
 void SchoolSystem::Run()
 {
+
 	int num = 0;
+	std::string input = "";
+	std::string input2 = "";
 
 	while (true)
 	{
@@ -19,7 +22,6 @@ void SchoolSystem::Run()
 		std::cout << "9. Exit\n";
 
 		//Input
-		std::string input = "";
 		std::getline(std::cin, input);
 		num = stoi(input);
 
@@ -27,11 +29,7 @@ void SchoolSystem::Run()
 		{
 			//create class
 			case 1:
-				std::cout << "Write a classname\n";
-				std::getline(std::cin, input);
-				schoolClasses.push_back(input);
-				std::cout << "Class " << input << " created\n";
-
+				AddClass(input);
 
 				break;
 
@@ -100,9 +98,12 @@ void SchoolSystem::RemoveStudent()
 
 }
 
-void SchoolSystem::AddClass()
+void SchoolSystem::AddClass(std::string input)
 {
-
+	std::cout << "Write a classname\n";
+	std::getline(std::cin, input);
+	schoolClasses.push_back(input);
+	std::cout << "Class " << input << " created\n";
 }
 void SchoolSystem::RemoveClass()
 {
