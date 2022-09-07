@@ -2,25 +2,21 @@
 
 void SchoolSystem::Run()
 {
-	int counter = 0;
 	int num = 0;
-
-	
-
-
-
 
 	while (true)
 	{
 		//Menyn
 		std::cout << "SchoolSystem\n";
-		std::cout << "1. Skapa ny skolklass\n";
-		std::cout << "2. Lägg till elev i klass\n";
-		std::cout << "3. Byt elevs klass\n";
-		std::cout << "4. Ta bort elev från klass\n";
-		std::cout << "5. Ta bort elev från skolsystemet\n";
-		std::cout << "6. Hitta information om elev\n";
-		std::cout << "7. Hitta information om klass\n";
+		std::cout << "1. Create new Class\n";
+		std::cout << "2. Create new student\n";
+		std::cout << "3. Add student to class\n";
+		std::cout << "4. Switch students class\n";
+		std::cout << "5. Remove student from class\n";
+		std::cout << "6. Remove student from schoolsystem\n";
+		std::cout << "7. Find info about student\n";
+		std::cout << "8. Find info about class\n";
+		std::cout << "9. Exit\n";
 
 		//Input
 		std::string input = "";
@@ -29,28 +25,86 @@ void SchoolSystem::Run()
 
 		switch(num)
 		{
+			//create class
 			case 1:
-				std::cout << "hello";
+				std::cout << "Write a classname\n";
+				std::getline(std::cin, input);
+				schoolClasses.push_back(input);
+				std::cout << "Class " << input << " created\n";
 
-			break;
+
+				break;
+
+			case 2:
+
+				break;
+
+			case 3:
+
+				break;
+
+			case 4:
+
+				break;
+
+			case 5:
+
+				break;
+
+			case 6:
+
+				break;
+
+			case 7:
+
+				break;
+
+			//Info about class
+			case 8:
+				std::cout << "Write a classname\n";
+				std::getline(std::cin, input);
+				for (auto i : schoolClasses)
+				{
+					if(i==input)
+					{ 
+						std::cout << "Class found\n";
+						
+					}
+					else
+						std::cout << "Class not found\n";
+
+				}
+
+				break;
+
+			case 9:
+
+				break;
 
 		}
 			
 		
-		//Feedback
-
 	}
 }
 
 void SchoolSystem::AddStudent()
 {
 	Student student;
-	student.name = "blabal";
-	student.age = 123;
+	student.name = "";
+	student.age = 0;
 	students.push_back(student);
 }
 
 void SchoolSystem::RemoveStudent()
+{
+
+}
+
+void SchoolSystem::AddClass()
+{
+
+}
+void SchoolSystem::RemoveClass()
 {
 
 }
