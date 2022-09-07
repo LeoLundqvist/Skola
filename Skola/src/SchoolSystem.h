@@ -7,9 +7,9 @@ class SchoolSystem
 {
 public:
 	void Run();
-	void AddStudent();
+	void AddStudent(std::string name, int age);
 	void RemoveStudent();
-	void AddClass(std::string input);
+	void AddClass(std::string classname);
 	void RemoveClass();
 	void InfoClass();
 	void InfoStudent();

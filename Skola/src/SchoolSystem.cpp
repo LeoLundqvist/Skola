@@ -5,7 +5,7 @@ void SchoolSystem::Run()
 
 	int num = 0;
 	std::string input = "";
-	std::string input2 = "";
+	int input2 = 0;
 
 	while (true)
 	{
@@ -27,14 +27,12 @@ void SchoolSystem::Run()
 
 		switch(num)
 		{
-			//create class
 			case 1:
 				AddClass(input);
-
 				break;
 
 			case 2:
-
+				AddStudent(input, input2);
 				break;
 
 			case 3:
@@ -85,11 +83,15 @@ void SchoolSystem::Run()
 	}
 }
 
-void SchoolSystem::AddStudent()
+void SchoolSystem::AddStudent(std::string name, int age)
 {
-	Student student;
-	student.name = "";
-	student.age = 0;
+	Student student; 
+	std::cout << "Write the students name\n";
+	std::getline(std::cin, name);
+	std::cout << "Write the students age\n";
+	std::cin >> age;
+	student.name = name;
+	student.age = age;
 	students.push_back(student);
 }
 
@@ -98,14 +100,24 @@ void SchoolSystem::RemoveStudent()
 
 }
 
-void SchoolSystem::AddClass(std::string input)
+void SchoolSystem::AddClass(std::string classname)
 {
 	std::cout << "Write a classname\n";
-	std::getline(std::cin, input);
-	schoolClasses.push_back(input);
-	std::cout << "Class " << input << " created\n";
+	std::getline(std::cin, classname);
+	schoolClasses.push_back(classname);
+	std::cout << "Class " << classname << " created\n";
 }
 void SchoolSystem::RemoveClass()
+{
+
+}
+
+void SchoolSystem::InfoClass()
+{
+
+}
+
+void SchoolSystem::InfoStudent()
 {
 
 }
