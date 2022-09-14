@@ -102,12 +102,15 @@ void SchoolSystem::AddStudentToClass(std::string input)
 
 			for (auto j : schoolClasses)
 			{
-				if (i.classname == j)
+				if (input == j)
 				{
 					std::cout << "Are you sure you want to add " << i.name << " to the class" << j << "\nY/N\n";
+					std::cin >> input;
 					if (input == "Y")
 					{
 						i.classname == j;
+						std::cout << "Student " << i.name << " is now a part of " << j << "\n";
+
 					}
 				}
 			}
