@@ -51,6 +51,7 @@ void SchoolSystem::Run()
 				break;
 
 			case 7:
+				InfoStudent();
 
 				break;
 
@@ -63,7 +64,7 @@ void SchoolSystem::Run()
 
 			case 9:
 
-				break;
+				return;
 
 		}
 	}
@@ -157,28 +158,32 @@ void SchoolSystem::RemoveClass()
 
 void SchoolSystem::InfoClass(std::string input)
 {
+	int counter = 0;
 	std::cout << "Write a classname\n";
-	std::getline(std::cin, input);
+	std::cin >> input;
 	for (auto i : schoolClasses)
 	{
+		//looks if class exists
 		if (i == input)
 		{
 			std::cout << "Class found\n";
 
 			for (auto j : students)
 			{
-				if (i == j.classname)
+				//if students class is the same
+				if (input == j.classname)
 				{
+					counter++;
+					std::cout << "Student #" << counter << "\n";
 					std::cout << j.name << "\n";
 					std::cout << j.age << "\n\n";
-
 				}
 			}
 
 		}
 	}
 
-	std::cout << "Class not found\n";
+	//std::cout << "Class not found\n";
 }
 
 void SchoolSystem::InfoStudent()
