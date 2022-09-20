@@ -36,6 +36,7 @@ void SchoolSystem::Run()
 
 			case 3:
 				AddStudentToClass(input);
+
 				break;
 
 			case 4:
@@ -109,7 +110,7 @@ void SchoolSystem::AddStudentToClass(std::string input)
 					std::cin >> input;
 					if (input == "Y")
 					{
-						i.classname == j;
+						i.classname = j;
 						std::cout << "Student " << i.name << " is now a part of " << j << "\n";
 
 					}
@@ -177,16 +178,23 @@ void SchoolSystem::InfoClass(std::string input)
 					std::cout << "Student #" << counter << "\n";
 					std::cout << j.name << "\n";
 					std::cout << j.age << "\n\n";
+					
 				}
 			}
-
+			
 		}
 	}
 
-	//std::cout << "Class not found\n";
+	std::cout << "Class not found\n";
 }
 
 void SchoolSystem::InfoStudent()
 {
+	for (auto j : students)
+	{
+		std::cout << j.name << "\n";
+		std::cout << j.age << "\n";
+		std::cout << j.classname << "\n\n";
 
+	}
 }
