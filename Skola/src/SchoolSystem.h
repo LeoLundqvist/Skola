@@ -10,14 +10,10 @@ public:
 	void AddStudent();
 	void AddClass();
 	void AddStudentToClass();
-
-	void RemoveStudent();
+	void RemoveStudentFromClass();
 	void RemoveClass();
 	void InfoClass();
 	void InfoStudent();
-
-
-
 
 	std::vector<Student> students;
 	std::vector<std::string> schoolClasses;

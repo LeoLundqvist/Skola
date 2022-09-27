@@ -44,7 +44,7 @@ void SchoolSystem::Run()
 				break;
 
 			case 5:
-
+				RemoveStudentFromClass();
 				break;
 
 			case 6:
@@ -73,11 +73,11 @@ void SchoolSystem::Run()
 
 void SchoolSystem::AddClass()
 {
-	std::string classname = "";
+	std::string className = "";
 	std::cout << "Write a classname\n";
-	std::cin >> classname;
-	schoolClasses.push_back(classname);
-	std::cout << "Class " << classname << " created\n";
+	std::cin >> className;
+	schoolClasses.push_back(className);
+	std::cout << "Class " << className << " created\n";
 }
 
 void SchoolSystem::AddStudent()
@@ -98,65 +98,57 @@ void SchoolSystem::AddStudent()
 
 void SchoolSystem::AddStudentToClass()
 {
-	std::string input = "";
-	std::string YNinput = "";
+	std::string className = "";
+	std::string studentName = "";
 
-	std::cout << "Write the students name\n";
-	std::cin >> input;
+	std::cout << "Write the class name\n";
+	std::cin >> className;
+
+	std::cout << "Which student do you want to add the class?\n";
+	std::cin >> studentName;
 	
 	for (auto& i : schoolClasses)
 	{
-		if (i != input)return;
-	}
-
-	std::cout << "Which class do you want to add the student to?\n";
-	std::cin >> input;
-
-	for (auto& i : students)
-	{
-		if (i.name == input)
+		if (i != className)
 		{
-			std::cout << "Are you sure you want to add " << i.name  << " to the class\nY/N\n";
-			std::cin >> input;
-			if (YNinput == "Y")
-			{
-				i.classname = input;
-				std::cout << "Student " << i.name << " is added to the class\n";
-			}
+			std::cout << "The class " << className << " doesn't exist\n";
+			return;
 		}
 	}
 
+	for (auto& i : students)
+	{
+		if (i.name == studentName)
+		{
+			i.classname = className;
+			std::cout << "Student " << i.name << " is added to the class " << i.classname << "\n";
+		}
+	}
 }
 
-void SchoolSystem::RemoveStudent()
+void SchoolSystem::RemoveStudentFromClass()
 {
 	std::string name = "";
 	int age = 0;
 	std::cout << "Write the students name\n";
 	std::cin >> name;
 
-
-
 	for (auto i : students)
 	{
 		if (i.name == name)
 		{
-			for (auto j : schoolClasses)
+			if (i.classname == "")
 			{
-				if (i.classname == j)
-				{
-					std::cout << "Are you sure you want to remove " << name << " from the class " << j << "\n";
-					if (name == "Y")
-					{
-						i.classname == "";
-					}
-				}
+				std::cout << name << " doesn't have a class\n";
+				return;
 			}
+			std::cout << name << " was removed from " << i.classname << "\n";
+			i.classname == "";
+			return;
 		}
-		else
-			std::cout << "Student " << name << " not found" << "\n";
 	}
 
+	std::cout << "Student not found\n";
 }
 
 void SchoolSystem::RemoveClass()
@@ -170,27 +162,27 @@ void SchoolSystem::InfoClass()
 	std::string input = "";
 	std::cout << "Write a classname\n";
 	std::cin >> input;
-	for (auto i : schoolClasses)
-	{
-		//looks if class exists
-		if (i == input)
-		{
-			std::cout << "Class found\n";
 
-			for (auto j : students)
-			{
-				//if students class is the same
-				if (input == j.classname)
-				{
-					counter++;
-					std::cout << "Student #" << counter << "\n";
-					std::cout << j.name << "\n";
-					std::cout << j.age << "\n\n";
-				}
-			}
+	for (auto& i : schoolClasses)
+	{
+		if (input != i)
+		{
+			std::cout << "Class not found\n";
+			return;
 		}
 	}
-	std::cout << "Class not found\n";
+
+	for (auto& i : students)
+	{
+		if(i.classname == input)
+		{
+			counter++;
+			std::cout << "Student " << counter << i.name << "\n";
+		}
+	}
+    /*
+	*/
+	
 }
 
 void SchoolSystem::InfoStudent()
@@ -203,11 +195,11 @@ void SchoolSystem::InfoStudent()
 	{
 		if(input == i.name)
 		{
-			std::cout << i.name << "\n";
-			std::cout << i.age << "\n";
-			std::cout << i.classname << "\n\n";
+			std::cout << "Name: " << i.name << "\n";
+			std::cout << "Age: "<< i.age << "\n";
+			std::cout << "Class: " << i.classname << "\n\n";
 			return;
 		}
 	}
-	std::cout << "Student not found\n";
+	std::cout << "Student not found";
 }
