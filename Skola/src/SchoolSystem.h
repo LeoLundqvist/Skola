@@ -11,7 +11,7 @@ public:
 	void AddClass();
 	void AddStudentToClass();
 	void RemoveStudentFromClass();
-	void RemoveClass();
+	void RemoveStudent();
 	void InfoClass();
 	void InfoStudent();
 

@@ -3,9 +3,7 @@
 void SchoolSystem::Run()
 {
 
-	int num = 0;
-	std::string input = "";
-	int input2 = 0;
+	int switchNum = 0;
 
 	while (true)
 	{
@@ -22,9 +20,9 @@ void SchoolSystem::Run()
 		std::cout << "9. Exit\n";
 
 		//Input
-		std::cin >> num;
+		std::cin >> switchNum;
 		
-		switch(num)
+		switch(switchNum)
 		{
 			case 1:
 				AddClass();
@@ -56,11 +54,9 @@ void SchoolSystem::Run()
 
 				break;
 
-			//Info about class
 			case 8:
 				InfoClass();
 				
-
 				break;
 
 			case 9:
@@ -100,6 +96,7 @@ void SchoolSystem::AddStudentToClass()
 {
 	std::string className = "";
 	std::string studentName = "";
+	std::string YNInput = "";
 
 	std::cout << "Write the class name\n";
 	std::cin >> className;
@@ -107,29 +104,38 @@ void SchoolSystem::AddStudentToClass()
 	std::cout << "Which student do you want to add the class?\n";
 	std::cin >> studentName;
 	
-	for (auto& i : schoolClasses)
+	//checks if className is in schoolClasses vector
+	if (std::count(schoolClasses.begin(), schoolClasses.end(), className)){}
+	else
 	{
-		if (i != className)
-		{
-			std::cout << "The class " << className << " doesn't exist\n";
-			return;
-		}
+		std::cout << "The class " << className << " doesn't exist\n";
+		std::cout << "Do you want to make this into a class and add the student to it?\nY/N\n";
+		std::cin >> YNInput;
 	}
 
 	for (auto& i : students)
 	{
 		if (i.name == studentName)
 		{
+			//if you dont want to create a new class
+			if (YNInput == "N") return;
+
+			//if you want to create a new class
+			if (YNInput == "Y") schoolClasses.push_back(className);
+
+			//the students class is saved
 			i.classname = className;
 			std::cout << "Student " << i.name << " is added to the class " << i.classname << "\n";
+			return;
 		}
 	}
+	std::cout << "Student " << studentName << " doesn't exist\n";
+
 }
 
 void SchoolSystem::RemoveStudentFromClass()
 {
 	std::string name = "";
-	int age = 0;
 	std::cout << "Write the students name\n";
 	std::cin >> name;
 
@@ -147,13 +153,13 @@ void SchoolSystem::RemoveStudentFromClass()
 			return;
 		}
 	}
-
+	//the only way that this line gets read is if no student has the name of your input
 	std::cout << "Student not found\n";
 }
 
-void SchoolSystem::RemoveClass()
+void SchoolSystem::RemoveStudent()
 {
-
+	
 }
 
 void SchoolSystem::InfoClass()
@@ -179,10 +185,7 @@ void SchoolSystem::InfoClass()
 			counter++;
 			std::cout << "Student " << counter << i.name << "\n";
 		}
-	}
-    /*
-	*/
-	
+	}	
 }
 
 void SchoolSystem::InfoStudent()
