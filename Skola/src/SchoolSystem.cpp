@@ -105,8 +105,7 @@ void SchoolSystem::AddStudentToClass()
 	std::cin >> studentName;
 	
 	//checks if className is in schoolClasses vector
-	if (std::count(schoolClasses.begin(), schoolClasses.end(), className)){}
-	else
+	if (!std::count(schoolClasses.begin(), schoolClasses.end(), className))
 	{
 		std::cout << "The class " << className << " doesn't exist\n";
 		std::cout << "Do you want to make this into a class and add the student to it?\nY/N\n";
@@ -143,6 +142,7 @@ void SchoolSystem::RemoveStudentFromClass()
 	{
 		if (i.name == name)
 		{
+			//if the class is empty it means that no class has been added
 			if (i.classname == "")
 			{
 				std::cout << name << " doesn't have a class\n";
@@ -165,25 +165,22 @@ void SchoolSystem::RemoveStudent()
 void SchoolSystem::InfoClass()
 {
 	int counter = 0;
-	std::string input = "";
+	std::string className = "";
 	std::cout << "Write a classname\n";
-	std::cin >> input;
+	std::cin >> className;
 
-	for (auto& i : schoolClasses)
+	if (!std::count(schoolClasses.begin(), schoolClasses.end(), className))
 	{
-		if (input != i)
-		{
-			std::cout << "Class not found\n";
-			return;
-		}
+		std::cout << "Class not found\n";
+		return;
 	}
 
 	for (auto& i : students)
 	{
-		if(i.classname == input)
+		if(i.classname == className)
 		{
 			counter++;
-			std::cout << "Student " << counter << i.name << "\n";
+			std::cout << "Student " << counter << ": " << i.name << "\n";
 		}
 	}	
 }
