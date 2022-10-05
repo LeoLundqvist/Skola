@@ -10,6 +10,8 @@ public:
 	void AddStudent();
 	void AddClass();
 	void AddStudentToClass();
+	void CheckStudent();
+
 	void RemoveStudentFromClass();
 	void RemoveStudent();
 	void InfoClass();
